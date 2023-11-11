@@ -1,0 +1,79 @@
+pipeline {
+  agent {label 'dockerImageBuilder'}
+  environment{
+      DOCKERHUB_CREDENTIALS = credentials('saragurunglabs01-dockerhub')
+      }
+   stages {
+     
+    stage ('Test') {
+      steps {
+        sh '''#!/bin/bash
+        npx kill-port 3000
+        cd frontend
+        npm install
+        npm start
+        sleep 30
+        APPLICATION_IP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=ec2_2" --query "Reservations[*].Instances[*].PublicIpAddress" --output text)
+        STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://$APPLICATION_IP)
+        sleep 10
+        if ! [[ $STATUS_CODE == 2* || $STATUS_CODE == 3* ]]; then
+            echo "ERROR...."
+            curl http://$APPLICATION_IP
+            exit 1
+        fi
+        '''
+     }
+     
+    stage ('Build') {
+      steps {
+          sh 'docker build -t saragurunglabs01/frontend .'
+    }
+}
+     stage ('Login') {
+        steps {
+          sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+      }
+}
+
+     stage ('Push') {
+        steps {
+            sh 'docker push saragurunglabs01/frontend'
+  }
+     }
+
+     stage('Init') {
+       agent {label 'awsDeploy'}
+       steps {
+        withCredentials([string(credentialsId: 'AWS_ACCESS_KEY', variable: 'aws_access_key'), 
+                        string(credentialsId: 'AWS_SECRET_KEY', variable: 'aws_secret_key')]) {
+                            dir('intTerraform') {
+                              sh 'terraform init' 
+                            }
+         }
+    }
+   }
+      stage('Plan') {
+        agent {label 'awsDeploy'}
+       steps {
+        withCredentials([string(credentialsId: 'AWS_ACCESS_KEY', variable: 'aws_access_key'), 
+                        string(credentialsId: 'AWS_SECRET_KEY', variable: 'aws_secret_key')]) {
+                            dir('intTerraform') {
+                              sh 'terraform plan -out plan.tfplan -var="aws_access_key=$aws_access_key" -var="aws_secret_key=$aws_secret_key"' 
+                            }
+         }
+    }
+   }
+      stage('Apply') {
+        agent {label 'awsDeploy'}
+       steps {
+        withCredentials([string(credentialsId: 'AWS_ACCESS_KEY', variable: 'aws_access_key'), 
+                        string(credentialsId: 'AWS_SECRET_KEY', variable: 'aws_secret_key')]) {
+                            dir('intTerraform') {
+                              sh 'terraform apply plan.tfplan' 
+                            }
+         }
+    }
+   }
+  }
+    }
+}
