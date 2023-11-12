@@ -1,3 +1,10 @@
+Project Manager: Dwayne Toler
+
+Chief Architect: Andrew Mullen
+
+System Administrator: Saraswati Gurung
+
+
 ## Purpose
 
 The purpose of this project is to streamline the deployment process for a web application, consisting of a Dockerized frontend and a Dockerized backend, on Amazon Web Services (AWS) using ECS (Elastic Container Service). Additionally, the documentation includes the creation of a Jenkins manager and agent architecture for continuous integration and deployment. The project aims to enhance security by implementing a Python script that automatically checks for sensitive information, such as AWS secret keys and access keys, before allowing code pushes to GitHub.
@@ -81,4 +88,7 @@ The Jenkinsfile for deploying the backend ECS Terraform files orchestrates the d
 **2. Jenkinsfile for Frontend Deployment**
 
 The Jenkinsfile for deploying the frontend ECS Terraform files complements the backend deployment. 
+
+
+## System Diagram
 
