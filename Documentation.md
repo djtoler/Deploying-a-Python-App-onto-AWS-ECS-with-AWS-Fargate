@@ -19,7 +19,7 @@ Docker and default-jre installation.
 **Instance 3:**
 Terraform and default-jre installation.
 
-# ECS and VPC Terraform Files:
+## ECS and VPC Terraform Files:
 
 Terraform files are included to define the AWS infrastructure. This includes setting up two Availability Zones (AZs), two public subnets, frontend and backend containers, a route table, security group configurations, and an Application Load Balancer (ALB).
 
