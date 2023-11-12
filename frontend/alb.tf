@@ -39,7 +39,7 @@ resource "aws_alb_listener" "ecom_app_listener" {
 
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.ecom-app.arn
+    target_group_arn = aws_lb_target_group.ecom-app-fe.arn
   }
 }
 
