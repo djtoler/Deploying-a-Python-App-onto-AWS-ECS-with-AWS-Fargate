@@ -1,5 +1,5 @@
 pipeline {
-  agent {label 'dockerImageBuilder'}
+  agent {label 'awsDeploy2}
   environment{
       DOCKERHUB_CREDENTIALS = credentials('saragurunglabs01-dockerhub')
       }
@@ -13,7 +13,7 @@ pipeline {
         npm install
         npm start
         sleep 30
-        APPLICATION_IP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=ec2_2" --query "Reservations[*].Instances[*].PublicIpAddress" --output text)
+        APPLICATION_IP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=D8_Docker_EC2" --query 'Reservations[*].Instances[*].PublicIpAddress' --output text)
         STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://$APPLICATION_IP)
         sleep 10
         if ! [[ $STATUS_CODE == 2* || $STATUS_CODE == 3* ]]; then
