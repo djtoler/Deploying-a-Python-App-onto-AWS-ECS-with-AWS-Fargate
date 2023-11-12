@@ -1,0 +1,67 @@
+pipeline {
+    agent { label 'awsDeploy2' } 
+    
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('djtoler-dockerhub')
+    }
+    
+    stages {
+        stage('Build') {
+            steps {
+              dir('frontend') {
+                sh 'sudo docker build -t djtoler/fetest1dp8 .'
+              }
+            }
+        }
+        
+        stage('Login') {
+            steps {
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+            }
+        }
+        
+        stage('Push') {
+            steps {
+              dir('frontend') {
+                sh 'sudo docker push djtoler/fetest1dp8'
+              }
+            }
+        }
+        
+        stage('Init') {
+            agent { label 'awsDeploy' }
+            steps {
+                withCredentials([
+                    string(credentialsId: 'AWS_ACCESS_KEY', variable: 'aws_access_key'), 
+                    string(credentialsId: 'AWS_SECRET_KEY', variable: 'aws_secret_key')
+                ]) {
+                    sh 'terraform init' 
+                }
+            }
+        }
+        
+        stage('Plan') {
+            agent { label 'awsDeploy' }
+            steps {
+                withCredentials([
+                    string(credentialsId: 'AWS_ACCESS_KEY', variable: 'aws_access_key'), 
+                    string(credentialsId: 'AWS_SECRET_KEY', variable: 'aws_secret_key')
+                ]) {
+                    sh 'terraform plan -out=plan.tfplan -var="aws_access_key=$aws_access_key" -var="aws_secret_key=$aws_secret_key"' 
+                }
+            }
+        }
+        
+        stage('Apply') {
+            agent { label 'awsDeploy' }
+            steps {
+                withCredentials([
+                    string(credentialsId: 'AWS_ACCESS_KEY', variable: 'aws_access_key'), 
+                    string(credentialsId: 'AWS_SECRET_KEY', variable: 'aws_secret_key')
+                ]) {
+                    sh 'terraform apply "plan.tfplan"' 
+                }
+            }
+        }
+    }
+}
