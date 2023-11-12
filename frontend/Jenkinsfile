@@ -8,7 +8,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+              dir('frontend') {
                 sh 'sudo docker build -t djtoler/fetest1dp8 .'
+              }
             }
         }
         
@@ -20,7 +22,9 @@ pipeline {
         
         stage('Push') {
             steps {
+              dir('frontend') {
                 sh 'sudo docker push djtoler/fetest1dp8'
+              }
             }
         }
         
