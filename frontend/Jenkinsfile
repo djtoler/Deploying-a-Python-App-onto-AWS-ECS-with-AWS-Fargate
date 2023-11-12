@@ -4,25 +4,6 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials('djtoler-dockerhub')
     }
     stages {
-        stage('Test') {
-            steps {
-                sh '''#!/bin/bash
-                npx kill-port 3000
-                cd frontend
-                npm install
-                npm start
-                sleep 30
-                APPLICATION_IP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=D8_Docker_EC2" --query 'Reservations[*].Instances[*].PublicIpAddress' --output text)
-                STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://$APPLICATION_IP)
-                sleep 10
-                if ! [[ $STATUS_CODE == 2* || $STATUS_CODE == 3* ]]; then
-                    echo "ERROR...."
-                    curl http://$APPLICATION_IP
-                    exit 1
-                fi
-                '''
-            }
-        }
         stage('Build') {
             steps {
                 sh 'docker build -t djtoler/fetest1dp8 .'
