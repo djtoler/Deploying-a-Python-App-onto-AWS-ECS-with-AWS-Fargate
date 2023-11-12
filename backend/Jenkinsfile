@@ -1,5 +1,5 @@
 pipeline {
-  agent {label 'dockerImageBuilder'}
+  agent {label 'awsDeploy2'}
   environment{
       DOCKERHUB_CREDENTIALS = credentials('djtoler-dockerhub')
       }
