@@ -154,3 +154,4 @@ resource "aws_security_group" "ingress_app_fe" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
