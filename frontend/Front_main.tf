@@ -30,7 +30,7 @@ resource "aws_ecs_task_definition" "aws-ecs-task-fe" {
   [
   {
       "name": "Ecom-container-fe",
-      "image": "saragurunglabs01/frontend:01",
+      "image": "djtoler/fetest1dp8:latest",
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
