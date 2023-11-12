@@ -68,11 +68,11 @@ Follow the steps above, just make sure to select username and password for kind 
 
 These Jenkinsfiles are pivotal in maintaining a robust and automated deployment workflow for the ECS-based infrastructure, adhering to best practices for continuous integration and continuous deployment (CI/CD). 
 
-# 1. Jenkinsfile for Backend Deployment
+**1. Jenkinsfile for Backend Deployment**
 
 The Jenkinsfile for deploying the backend ECS Terraform files orchestrates the deployment process in a seamless manner.
 
-# 2. Jenkinsfile for Frontend Deployment
+**2. Jenkinsfile for Frontend Deployment**
 
 The Jenkinsfile for deploying the frontend ECS Terraform files complements the backend deployment. 
 
