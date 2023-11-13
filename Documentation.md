@@ -21,25 +21,30 @@ The Python script, `check_sensitive.py`, serves as a crucial security measure in
 
 ## Terraform and .tf files
 Terraform is an open-source infrastructure as code (IaC) tool that allows you to define and provision infrastructure resources using declarative configuration files. It automates the deployment and management of cloud resources, making it easier to maintain and scale infrastructure in a consistent and repeatable manner.
-Terraform was used to create a Jenkins manager and agents architecture within a default VPC.
+Terraform was used to create a Jenkins manager and agents [architecture](https://github.com/djtoler/Deployment8/blob/main/jenkins_main.tf) within a default VPC.
 
 **Instance 1:**
-Jenkins installation with Docker pipeline plugin.
+[Jenkins](https://github.com/djtoler/Deployment8/blob/main/s_jenkins.sh) installation with Docker pipeline plugin.
 
 **Instance 2 (T.2 medium):**
-Docker and default-jre installation.
+[Docker](https://github.com/djtoler/Deployment8/blob/main/s_docker.sh) and default-jre installation.
 
 **Instance 3:**
-Terraform and default-jre installation.
+[Terraform](https://github.com/djtoler/Deployment8/blob/main/s_terraform.sh) and default-jre installation.
 
 ## ECS and VPC Terraform Files:
 
 Terraform files are included to define the AWS infrastructure. This includes setting up two Availability Zones (AZs), two public subnets, frontend and backend containers, a route table, security group configurations, and an Application Load Balancer (ALB).
+- [variables.tf](https://github.com/djtoler/Deployment8/blob/main/frontend/variables.tf)
+- [Vpc.tf](https://github.com/djtoler/Deployment8/blob/main/frontend/vpc.tf)
+- [alb.tf](https://github.com/djtoler/Deployment8/blob/main/frontend/alb.tf)
+- [Front_main.tf](https://github.com/djtoler/Deployment8/blob/main/frontend/Front_main.tf)
+- [back_main.tf](https://github.com/djtoler/Deployment8/blob/main/backend/back_main.tf)
 
 ## Docker and Dockerfiles
 
 A Docker image is a lightweight, standalone, and executable package that contains everything needed to run a piece of software, including the code, runtime, system tools, and libraries. Docker images are created from a set of instructions defined in a Dockerfile. They serve as the blueprint for containers.
-For this deployment, Docker images are provided for both the backend and frontend components. Instructions for building these images are outlined in two docker files, ensuring consistency and reproducibility across deployment environments.
+For this deployment, Docker images are provided for both the backend and frontend components. Instructions for building these images are outlined in two Docker files, ensuring consistency and reproducibility across deployment environments.
 
 **Backend**
 <img width="768" alt="Screen Shot 2023-11-11 at 7 50 40 PM" src="https://github.com/SaraGurungLABS01/Deployment8/assets/140760966/0306cfc4-c27b-45b4-ab36-bef373a9fc44">
@@ -47,7 +52,6 @@ For this deployment, Docker images are provided for both the backend and fronten
 **Frontend**
 <img width="693" alt="Screen Shot 2023-11-11 at 7 52 35 PM" src="https://github.com/SaraGurungLABS01/Deployment8/assets/140760966/a54c0558-0e5d-43e4-8f9e-6e29031d0f5c">
 
-## Jenkins and the Agents
 
 ## Jenkins Manager and Agent
 
