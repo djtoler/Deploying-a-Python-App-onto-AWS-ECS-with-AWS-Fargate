@@ -11,9 +11,9 @@ The purpose of this project is to streamline the deployment process for a web ap
 
 ## Git and Github 
 
-GitHub is a web-based platform that provides hosting for software development projects utilizing Git for version control.
+GitHub is a web-based platform that provides hosting for software development projects, utilizing Git for version control.
 
-n our collaborative project involving three contributors, the use of Git's branching strategy has been highly beneficial. Each collaborator working on an individual feature branch has minimized merge conflicts, enabling parallel development and faster progress. The isolation of changes in feature branches ensures that contributors can work independently without affecting the main codebase. The pull request mechanism facilitates efficient code review and collaboration, contributing to higher code quality. This approach has not only streamlined our workflow but also reduced the likelihood of conflicts during the merging process. Overall, Git's branching strategy has played a crucial role in fostering a collaborative, organized, and efficient development environment for our project.
+In our collaborative project involving three contributors, the use of Git's branching strategy has been highly beneficial. Each collaborator working on an individual feature branch has minimized merge conflicts, enabling parallel development and faster progress. The isolation of changes in feature branches ensures that contributors can work independently without affecting the main codebase. The pull request mechanism facilitates efficient code review and collaboration, contributing to higher code quality. This approach has not only streamlined our workflow but also reduced the likelihood of conflicts during the merging process. Overall, Git's branching strategy has played a crucial role in fostering a collaborative, organized, and efficient development environment for our project.
 
 ## Python Script
 
@@ -67,28 +67,29 @@ Creates the entire application infrastructure.
 
 ### Jenkin Credentials
 
-To ensure Terraform's access to AWS, it necessitates both AWS access and secret keys. Given that the terraform files reside on GitHub, where public access should be restricted for security reasons, AWS credentials are created within Jenkins. Configuring AWS credentials within Jenkins is crucial as it fosters the integration of AWS services into your automation workflows, ensuring secure access to resources. Likewise, Docker Hub credentials, encompassing a username and password, are also established. These credentials are essential for secure interactions with Docker Hub, enabling your applications to be efficiently built, tested, and pushed to the container registry. 
+To ensure Terraform's access to AWS, it necessitates both AWS access and secret keys. Given that the Terraform files reside on GitHub, where public access should be restricted for security reasons, AWS credentials are created within Jenkins. Configuring AWS credentials within Jenkins is crucial as it fosters the integration of AWS services into your automation workflows, ensuring secure access to resources. Likewise, Docker Hub credentials, encompassing a username and password, are also established. These credentials are essential for secure interactions with Docker Hub, enabling your applications to be efficiently built, tested, and pushed to the container registry. 
 
 **AWS**
 
-To securely configure AWS credentials in Jenkins for the automation purpose, please refer to the following link for step-by-step instructions: [How to Configure AWS credentials in  Jenkins](https://scribehow.com/shared/How_to_Securely_Configure_AWS_Access_Keys_in_Jenkins__MNeQvA0RSOWj4Ig3pdzIPw)https://scribehow.com/shared/How_to_Securely_Configure_AWS_Access_Keys_in_Jenkins__MNeQvA0RSOWj4Ig3pdzIPw
+To securely configure AWS credentials in Jenkins for automation purposes, please refer to the following link for step-by-step instructions: [How to Configure AWS credentials in  Jenkins](https://scribehow.com/shared/How_to_Securely_Configure_AWS_Access_Keys_in_Jenkins__MNeQvA0RSOWj4Ig3pdzIPw)https://scribehow.com/shared/How_to_Securely_Configure_AWS_Access_Keys_in_Jenkins__MNeQvA0RSOWj4Ig3pdzIPw
 
 **Docker Hub**
 
 Follow the steps above, just make sure to select username and password for kind and add your dockerhub credentials
 
-## Jenkin Files for ECS Terraform Deployment
+## Jenkins Files for ECS Terraform Deployment
 
 These Jenkinsfiles are pivotal in maintaining a robust and automated deployment workflow for the ECS-based infrastructure, adhering to best practices for continuous integration and continuous deployment (CI/CD). 
 
 **1. Jenkinsfile for Backend Deployment**
 
-The Jenkinsfile for deploying the backend ECS Terraform files orchestrates the deployment process in a seamless manner.
+The [Jenkinsfile](https://github.com/andmulLABS01/Deployment_7AM/blob/main/Deployment_7.drawio.png) for deploying the backend ECS Terraform files orchestrates the deployment process in a seamless manner.
 
 **2. Jenkinsfile for Frontend Deployment**
 
-The Jenkinsfile for deploying the frontend ECS Terraform files complements the backend deployment. 
+The [Jenkinsfile](https://github.com/andmulLABS01/Deployment_7AM/blob/main/Deployment_7.drawio.png)  for deploying the frontend ECS Terraform files complements the backend deployment. 
 
 
 ## System Diagram
 
+To view the diagram of the system design/deployment pipeline, click [HERE](https://github.com/andmulLABS01/Deployment_7AM/blob/main/Deployment_7.drawio.png)
