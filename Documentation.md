@@ -75,7 +75,7 @@ To securely configure AWS credentials in Jenkins for automation purposes, please
 
 **Docker Hub**
 
-Follow the steps above, just make sure to select username and password for kind and add your dockerhub credentials
+Follow the steps above; just make sure to select username and password for kind and add your dockerhub credentials
 
 ## Jenkins Files for ECS Terraform Deployment
 
@@ -83,13 +83,13 @@ These Jenkinsfiles are pivotal in maintaining a robust and automated deployment 
 
 **1. Jenkinsfile for Backend Deployment**
 
-The [Jenkinsfile](https://github.com/andmulLABS01/Deployment_7AM/blob/main/Deployment_7.drawio.png) for deploying the backend ECS Terraform files orchestrates the deployment process in a seamless manner.
+The [Jenkinsfile](https://github.com/djtoler/Deployment8/blob/main/backend/Jenkinsfile) for deploying the backend ECS Terraform files orchestrates the deployment process in a seamless manner.
 
 **2. Jenkinsfile for Frontend Deployment**
 
-The [Jenkinsfile](https://github.com/andmulLABS01/Deployment_7AM/blob/main/Deployment_7.drawio.png)  for deploying the frontend ECS Terraform files complements the backend deployment. 
+The [Jenkinsfile](https://github.com/djtoler/Deployment8/blob/main/frontend/Jenkinsfile)  for deploying the frontend ECS Terraform files complements the backend deployment. 
 
 
 ## System Diagram
 
-To view the diagram of the system design/deployment pipeline, click [HERE](https://github.com/andmulLABS01/Deployment_7AM/blob/main/Deployment_7.drawio.png)
+To view the diagram of the system design/deployment pipeline, click [HERE](https://github.com/djtoler/Deployment8/blob/main/Deployment_8.drawio%20(1).png)
