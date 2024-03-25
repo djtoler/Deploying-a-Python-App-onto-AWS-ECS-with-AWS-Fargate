@@ -1,4 +1,8 @@
-Project Manager: Dwayne Toler
+<p align="left">
+<img src="https://github.com/djtoler/Deploying-a-Python-App-onto-AWS-ECS-with-AWS-Fargate/blob/main/ecsfargate.png">
+</p>
+
+### Project Manager: Dwayne Toler
 
 Chief Architect: Andrew Mullen
 
