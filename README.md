@@ -1,7 +1,3 @@
-<p align="left">
-<img src="https://github.com/djtoler/Deploying-a-Python-App-onto-AWS-ECS-with-AWS-Fargate/blob/main/Deployment_8.drawio%20(1).png">
-</p>
-
 Project Manager: Dwayne Toler
 
 Chief Architect: Andrew Mullen
@@ -100,5 +96,8 @@ The [Jenkinsfile](https://github.com/djtoler/Deployment8/blob/main/frontend/Jenk
 
 ## System Diagram
 
-To view the diagram of the system design/deployment pipeline, click [HERE](https://github.com/djtoler/Deployment8/blob/main/Deployment_8.drawio%20(1).png)
+<p align="left">
+<img src="https://github.com/djtoler/Deploying-a-Python-App-onto-AWS-ECS-with-AWS-Fargate/blob/main/Deployment_8.drawio%20(1).png">
+</p>
+
 
