@@ -5,9 +5,9 @@
 ### Project Manager: Dwayne Toler
 > ##### In this project, I was responsible for managing the deliverable timelines and making sure the project was completed by the due date. The first thing I did was to deploy the application myself to get a set of deploymemt steps that was sure to work. From there, I was able to support the team in any of the areas that we were behind on when they needed it to make sure our deliverables were completed on time. We were able to get the application deployed and submitted for review on time with documentation included.
 
-Chief Architect: Andrew Mullen
+#### Chief Architect: Andrew Mullen
 
-System Administrator: Saraswati Gurung
+#### System Administrator: Saraswati Gurung
 
 
 ## Purpose
